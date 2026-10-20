@@ -1,0 +1,15 @@
+solidity code --> Tranpile(compile ) -->ByteCode
+
+Turing conplete --> Loop etc. อะไรที่ทำซ้ำได้เรียกว่า Turing Complete ซึ่งเป็นข้อดีของ EVM
+Table ประกอบด้วย 2 Column Key(primary key), Value(data)  ทั้งKey เเละ Value มีขนาด 32 Byte
+ปัจจุบันเงินในระบบมีเยอะ การใช้ Proof of work จะไม่ใช้จะใช้ Proof of Steak เลยเปลี่ยนจาก Miner >> Validator
+คนที่วาง Steak(Eter) เยอะก็มีโอกาศได้เยอะ โดยการเลือกเป็นการสุ่มเพื่อเป็นคนสร้าง Block ใหม่  
+
+***Smart Contract ซึ่งทำงานด้วยการขับเคลื่อนด้วน Technology Blockchain ซึ่งมาจากคนสองคนมีสัญญาทำอะไรบางอย่างแต่รายละเอียดต่างจากสัญญาในโลกความจริงบ้าง
+โดยสัญญาจะฝังตัวใน Blockchain จะทำงานเมื่อเงื่อนไขได้รับการตอบสนองตามสัญญา 
+
+Step ในการสร้าง Smart Contract 
+Solidity >> Compile >> Bytecode >> Transaction >> Propagate ไปทุก Node >> Validator ใส่ Transaction ใน node >> Block(candidate block) >> Consensus  >> mainblockchain
+
+Visibility 
+statement (private/public/protected) 
