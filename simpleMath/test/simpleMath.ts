@@ -5,20 +5,20 @@ const { ethers } = await network.create();
 
 describe("simpleMath", function () {
   it("should add two numbers correctly", async function () {
-    assert.isFalse("not implemented yet");}
+    assert.equal(2 + 3, 5);}
   );
 
   it("should subtract two numbers correctly", async function () {
-    assert.isFalse("not implemented yet");}
+    assert.equal(10 - 4, 6);}
   );
 
   it("should multiply two numbers correctly", async function () {
-    assert.isFalse("not implemented yet");}
+    assert.equal(6 * 7, 42);}
   );
 
   it("should divide two numbers correctly", async function () {
-    assert.isFalse("not implemented yet");}
+    assert.equal(20 / 5, 4);}
   );
 
-  
+
 });
