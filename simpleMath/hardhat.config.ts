@@ -2,12 +2,46 @@ import hardhatToolboxMochaEthersPlugin from "@nomicfoundation/hardhat-toolbox-mo
 import { configVariable, defineConfig } from "hardhat/config";
 
 export default defineConfig({
-  solidity: "0.8.34",
   plugins: [hardhatToolboxMochaEthersPlugin],
+  solidity: {
+    profiles: {
+      default: {
+        version: "0.8.34",
+      },
+      production: {
+        version: "0.8.34",
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 200,
+          },
+        },
+      },
+    },
+  },
   networks: {
-    localhost: {
+    // "default" is the network Hardhat 3 uses when no --network flag is given.
+    // Point it at the local node (npx hardhat node) so scripts, tests and
+    // ignition deploys all hit http://127.0.0.1:8545 - the same node the
+    // frontend talks to over ws://127.0.0.1:8545/.
+    default: {
       type: "http",
+      chainType: "l1",
       url: "http://127.0.0.1:8545",
-    }
-  }
+    },
+    hardhatMainnet: {
+      type: "edr-simulated",
+      chainType: "l1",
+    },
+    hardhatOp: {
+      type: "edr-simulated",
+      chainType: "op",
+    },
+    sepolia: {
+      type: "http",
+      chainType: "l1",
+      url: configVariable("SEPOLIA_RPC_URL"),
+      accounts: [configVariable("SEPOLIA_PRIVATE_KEY")],
+    },
+  },
 });
