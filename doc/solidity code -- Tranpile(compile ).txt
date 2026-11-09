@@ -13,3 +13,96 @@ Solidity >> Compile >> Bytecode >> Transaction >> Propagate ไปทุก Node
 
 Visibility 
 statement (private/public/protected) 
+
+OOP
+Property = state variable (perminent in Blockchain)
+-private(เห็นใน Class)
+-public
+-Protected (inheritance เช่นประกาศตัวแปลใน Class A(x) >> subclass Class B(x) B สามารถเรียกใช้ Protected ได้แต่ class อื่นเรียกไม่ได้)
+method = function
+class = conttract 
+
+Class A {
+    private int x;
+    public int y;
+    protected int z;
+}
+
+class B extended A {
+
+}
+
+A obj1 = new A() [a.x , a.y , a.z]
+B obj2 = new B() [b.w, b.z, b.y]
+
+เขียน Smart Contract  (Solidity) >> Compile แปลงเป็น ByteCode >> Deploy
+ใช้คำสั่ง npx hardhat conpile ในการ Compile   npx hardhat node เป็รคำสั่งในการเริ่มรัน
+
+Application Programming Interface (API)
+Application Blockchain Interface (ABI) คล้ายๆ API 
+User ต้องมี ABI ถึงจะเรียกใช้ Smart contract ได้ 
+
+Transactional call >> change state variable 
+
+Test Driven Devolopment 
+เก็บ Requirement  >> Product Requirement Description >> Design >> component/database(stucture) >> testcase(fail/pass) >> dev >> until all passed 
+
+Library
+mocha = jS/ts Test Framework เอาไว้เขียน Test โดยมี Chai ไปเป็นตัวประกอบ 
+
+Migration การย้าย Solfware จากขี่นตอนพัฒนา ไปสู่ Devolopment Script  โดยจะอ่านแบบเรียงลำดับขั้นตอนการทำงานดังนั้นต้องตั้งชื่อไฟล์ด้วยเลข
+
+ฺBrowser >> Web3(api)
+
+Web3 Provider มีได้หลายวิธีเช่น
+-Instanctiate 
+
+
+ตัวอย่างการวิเคราะขั้นตอนในการแยกแยะเมื่อลูกค้าต้องการโปรแกรมประมูล Auction 
+รายละเอียดสินค้า
+สถานะการประมูล
+-เริ่ม
+-สิ้นสุด
+-ยกเลิก
+
+รายงาน >> OOP >> Reusability
+
+แบ่งตาม Role 
+*เจ้าของ (Owner, Admin)  
+ ใส่รายละเอียดสินค้า  >> Contract
+ *** Deployer >> เริ่มประมูล >> Started
+ เจ้าของสามารถ
+1 เริ่ม 
+ -จบการประมูล
+ -ยกเลิกการประมูล   
+2 ยกเลิก
+>> do nothing
+*สิ้นสุด (Ended)
+>>ส่งของให้ผู้ชนะ
+-ถอนเงินผู้ชนะ 
+
+ผู้เข้าประมุล(User, Client)
+1 เริ่ม 
+-ดูรายละเอียดสินค้าได้
+-ยื่นประมูล(bid) + money  --ยื่นประมูลซ้ำได้ในยอดที่มากกว่ายอดสูงสุดในขณะนั้น
+-รายละเอีนดการประมูลของตัวเอง
+2 ยกเลิก
+-ถอนเงินตัวเอง (widraw)
+3 สิ้นสุด(ended)
+>>ผู้ชนะ (...)
+
+ระบบกลาง (Shared Function)
+-ถอนเงินตัวเอง
+-ดู Product info 
+-ดูรายละเอียดการประมูลของผู้อื่น
+
+client/owner >> Proxy >>  BlockChain (smart contract)
+      ^
+      |
+    Event 
+มีการยื่นประมูล (Bid Event)
+สิ้นสุดการประมูล (Ended Event)
+มีการยกเลิกการประมูล (Cancle Event)
+ถอนเงิน (Widrawn Event)
+
+TDD 
