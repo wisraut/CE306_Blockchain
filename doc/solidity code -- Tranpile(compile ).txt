@@ -109,4 +109,26 @@ client/owner >> Proxy >>  BlockChain (smart contract)
 
 TDD 
 
-hardhat node (emulator) >> 20 account {account 1 เป็นผู้ Deploy contract}
+hardhat node (emulator) >> 20 account {account 1 เป็นผู้ Deploy contract} ทดลองเอา Account อื่นมาใช้
+ในการเรียกใช้ Smart contract  
+func (a, b, c)
+contract.func(a, b, c, {value: ...}) //metadataอยู่ในรูป JSON (value )  เมื่อ Compile ไปเเล้วจะเกิด Folder ใหม่ขื่อว่า Artifacr เก็บ Json 
+
+msg.sender = ผู้เรียกใช้ function
+msg.value = เงินที่ส่งมาใน Function (มี Keyword payable เท่านั้นถึงรับเงินได้)
+
+contract 
+ -state variable
+ -function (constructor)
+ -Event
+ -modifier ใช้ร่วมกัน Function 
+    -reqire (คล้าย if) รับสอง Parameter 
+     p1 - expression  == true/false
+     p2 -revert string 
+
+mapping - 2 column table (key, value)
+3+ mapping + struct
+table (mapping)
+  -who (address) 
+mapping (address >> uint256) bids ;
+

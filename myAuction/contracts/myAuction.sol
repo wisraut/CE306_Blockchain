@@ -44,6 +44,26 @@ contract MyAuction is Auction {
     AuctionState public STATE;
     uint256 public endTime;
     uint256 public highestBid;
+    address public highestBidder;
+
+    modifier onlyOwner() { // จะใช้ไดเฉพาะ เจ้าของ contract เท่านั้น
+        require(msg.sender == owner, "Only owner can call this function");  //ถ้า msg.sender ==  เป็น False จะเกิด Revert String 
+        _;
+      
+    }
+
+    modifier notOwner() { 
+        require(msg.sender != owner, "Owner cannot call this function");   
+        _;
+      
+    }
+
+    modifier onGoingAuction() { 
+        require(STATE == AuctionState.Started, "Auction is not ongoing");   
+        _;
+      
+    }
+
 
     constructor(string memory _brand, string memory _serialNumber, uint256 _duration) {
         owner = payable(msg.sender); // msg.sender คือคนที่ทำ Transaction เรียกใช้ constructor
@@ -51,12 +71,19 @@ contract MyAuction is Auction {
         STATE = AuctionState.Started;
         endTime = block.timestamp + _duration * 1 minutes; // block.timestamp จะมีเวลาใกล้เคียงปัจจุบัน
     }
-    function bid() external payable override {
-
+    function bid() external payable override notOwner onGoingAuction {
+        require(msg.value > highestBid, "Bid amount must be higher than the current highest bid");
+        require(msg.sender != highestBidder, "You are already the highest bidder");
+        highestBidder = msg.sender;
+        if (bids[highestBidder] > 0) {
+          biders.push(msg.sender);
+        }
+        bids[msg.sender] += msg.value;
+        highestBid = bids[msg.sender];
     }
 
     function getMyBid(address bidder) external view override returns (uint256) {
-        return 0;
+        return bids[bidder];
     }
 
     function endAuction() external override {
