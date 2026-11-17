@@ -1,0 +1,49 @@
+{
+  "_format": "hh3-sol-build-info-1",
+  "id": "solc-0_8_34-33ee23ce3a849aecfaa4d732157da635b429fab3",
+  "solcVersion": "0.8.34",
+  "solcLongVersion": "0.8.34+commit.80d5c536",
+  "compilerType": "solc",
+  "toolVersions": {
+    "hardhat": "3.21.2"
+  },
+  "userSourceNameMap": {
+    "contracts/myAuction.sol": "project/contracts/myAuction.sol"
+  },
+  "input": {
+    "language": "Solidity",
+    "settings": {
+      "evmVersion": "osaka",
+      "optimizer": {
+        "enabled": true,
+        "runs": 200
+      },
+      "outputSelection": {
+        "*": {
+          "": [
+            "ast"
+          ],
+          "*": [
+            "abi",
+            "evm.bytecode.linkReferences",
+            "evm.bytecode.object",
+            "evm.bytecode.opcodes",
+            "evm.bytecode.sourceMap",
+            "evm.deployedBytecode.immutableReferences",
+            "evm.deployedBytecode.linkReferences",
+            "evm.deployedBytecode.object",
+            "evm.deployedBytecode.opcodes",
+            "evm.deployedBytecode.sourceMap",
+            "evm.methodIdentifiers"
+          ]
+        }
+      },
+      "remappings": []
+    },
+    "sources": {
+      "project/contracts/myAuction.sol": {
+        "content": "// SPDX-License-Identifier: UNLICENSED\r\npragma solidity >=0.8.34 < 0.9.0;\r\nabstract contract Auction {\r\n    // เจ้าของ\r\n    address payable public owner;\r\n    // รายละเอียดสินค้า\r\n    struct Product {\r\n        string Brand;\r\n        string SerialNumber;\r\n    }\r\n    // สถานะการประมูล\r\n    enum AuctionState { Started, Ended, Canceled }\r\n    // client function\r\n    // ยื่นประมูลต้องส่งเงินมาด้วย\r\n    function bid() virtual external payable;\r\n    //ดูยอดประมูลของผู้ประมูล\r\n    function getMyBid(address bidder) virtual external view returns (uint256);\r\n\r\n    //owner function\r\n    // จบการประมูล\r\n    function endAuction() virtual external;\r\n    //ยกเลิกการประมูล\r\n    function cancelAuction() virtual external;\r\n\r\n    //shared function\r\n    //ถอนเงิน\r\n    function withdraw() virtual external;\r\n    //ดูรายละเอียดสินค้า\r\n    function getProduct() virtual external view returns(string memory, string memory);\r\n\r\n    // event\r\n    //มีการประมูล\r\n    event BidEvent(address bidder, uint256 amount, uint256 timestamp);\r\n    //จบการประมูล\r\n    event EndedEvent(string message, uint256 timestamp);\r\n    //ยกเลิกการประมูล\r\n    event CanceledEvent(string message, uint256 timestamp);\r\n    //มีการถอนเงิน\r\n    event WithdrawEvent(address withdrawer, uint256 amount, uint256 timestamp);\r\n}\n\ncontract MyAuction is Auction {\n    Product public product;\n    AuctionState public STATE;\n    uint256 public endTime;\n    uint256 public highestBid;\n\n    constructor(string memory _brand, string memory _serialNumber, uint256 _duration) {\n        owner = payable(msg.sender); // msg.sender คือคนที่ทำ Transaction เรียกใช้ constructor\n        product = Product(_brand, _serialNumber);\n        STATE = AuctionState.Started;\n        endTime = block.timestamp + _duration * 1 minutes; // block.timestamp จะมีเวลาใกล้เคียงปัจจุบัน\n    }\n    function bid() external payable override {\n\n    }\n\n    function getMyBid(address bidder) external view override returns (uint256) {\n        return 0;\n    }\n\n    function endAuction() external override {\n\n    }\n\n    function cancelAuction() external override {\n\n    }\n\n    function withdraw() external override {\n\n    }\n\n    function getProduct() external view override \n    returns (string memory, string memory) {\n        return (\"Hello\", \"World\");\n    }\n}"
+      }
+    }
+  }
+}

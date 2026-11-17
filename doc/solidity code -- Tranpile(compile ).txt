@@ -69,7 +69,9 @@ Web3 Provider มีได้หลายวิธีเช่น
 
 แบ่งตาม Role 
 *เจ้าของ (Owner, Admin)  
- ใส่รายละเอียดสินค้า  >> Contract
+ ใส่รายละเอียดสินค้า >> Contract 
+  -Brand
+  -serial num  
  *** Deployer >> เริ่มประมูล >> Started
  เจ้าของสามารถ
 1 เริ่ม 
@@ -106,3 +108,5 @@ client/owner >> Proxy >>  BlockChain (smart contract)
 ถอนเงิน (Widrawn Event)
 
 TDD 
+
+hardhat node (emulator) >> 20 account {account 1 เป็นผู้ Deploy contract}
