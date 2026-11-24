@@ -131,4 +131,4 @@ mapping - 2 column table (key, value)
 table (mapping)
   -who (address) 
 mapping (address >> uint256) bids ;
-
+mapping ออกสอบ
